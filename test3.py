@@ -28,6 +28,7 @@ for index, i in enumerate(data[:, 10]):
         data[index, 10] = 5
 
 choice = [17,66,89,134,148,158,165,171,179,181,199,212]
+# choice = np.random.randint(130,210,(20,))
 test = data[choice, :]
 train = np.delete(data, choice, 0)
 
@@ -55,7 +56,7 @@ start1 = time.perf_counter()
 neigh = KNeighborsClassifier(n_neighbors=3, algorithm='brute', metric='euclidean')
 neigh.fit(train_X.T, train_Y)
 Pe1 = neigh.score(test_X.T, test_Y)
-dist1, result1 = neigh.kneighbors(X=test_X.T, n_neighbors=3, return_distance=True)
-print(dist1)
+# dist1, result1 = neigh.kneighbors(X=test_X.T, n_neighbors=3, return_distance=True)
+# print(dist1)
 end1 = time.perf_counter()
 print(end1 - start1, Pe1)

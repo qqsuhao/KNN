@@ -14,26 +14,30 @@ Created on Wed Mar 13 21:58:57 2019
 
 import numpy as np
 import copy
-import matplotlib.pyplot as plt
+from numba import jit
+import math
 
 
-def display(x):
-    fig, ax = plt.subplots(
-        nrows=1,
-        ncols=2,
-        sharex=True,
-        sharey=True, )
-    ax = ax.flatten()
-    for i in range(2):
-        img = x.reshape(28, 28)
-        ax[i].imshow(img, cmap='Greys', interpolation='nearest')
-    ax[0].set_xticks([])
-    ax[0].set_yticks([])
-    plt.tight_layout()
-    plt.show()
+# def distsort(a, k, option=False):
+#     '''
+#     \param: a:array, 有两列第一列是距离，第二列是标签
+#     \param: k:排序的个数
+#     '''
+#     if a.shape[1] != 2:
+#         return
+#     x = copy.copy(a)
+#     y = np.zeros((k,2))
+#     for i in range(k):
+#         tmp = np.argmin(x[:,0])
+#         y[i,:] = x[tmp,:]
+#         x = np.delete(x, tmp, 0)
+#     if option:
+#         return y
+#     else:
+#         return y[:, 1]
 
 
-def distsort(a, k):
+def distsort(a, k, option=False):
     '''
     \param: a:array
     \param: k:排序的个数
@@ -60,7 +64,10 @@ def distsort(a, k):
             elif x[k + i, 0] < y[k - 1 - j, 0] and x[k + i, 0] >= y[k - 2 - j, 0]:
                 y = np.insert(y, k - 1 - j, x[k + i, :], axis=0)
                 break
-    return y[:k, :]
+    if option:
+            return y
+    else:
+        return y[0:k, 1]
 
 
 def force_research(dist_form, train_X, train_Y, test_x, k, kind):
@@ -75,22 +82,21 @@ def force_research(dist_form, train_X, train_Y, test_x, k, kind):
     :return: 返回对应近邻点的标签
     '''
     if dist_form is None:
-        def dist_form(x, y): return np.sqrt(np.sum((x - y)**2))
-
+        @ jit
+        def dist_form(x, y):
+            return np.sqrt(np.sum((x - y)**2))
     dist = np.zeros((np.shape(train_X)[1], ))
     for index, x in enumerate(train_X.T):
         dist[index] = dist_form(x, test_x)
 
-    # dist = np.sqrt(np.sum((np.tile(test_x,(np.shape(train_X)[1],1)).T - train_X)**2, axis=0))
+    # dist = list(map(lambda x,y:(x-y)**2, train_X, test_x))
+    # dist = sum(list[])
 
-    # params = {'a': dist, 'kind': kind}
-    # a = train_Y[np.argsort(**params)]
-    # a[0:k]
+    # dist = np.sqrt(np.sum((np.tile(test_x,(np.shape(train_X)[1],1)).T - train_X)**2, axis=0))
 
     table = np.array([dist, train_Y]).T
     neighbor = distsort(table, k)
-    # print(neighbor[0:k, 0])
-    return neighbor[0:k, 1]
+    return neighbor
 
 
 class classifier:
@@ -118,6 +124,7 @@ class classifier:
             self.prior = prior
         self.label_num = np.shape(self.prior)[0]  # label必须从0开始，否则此会出错
 
+    @ jit
     def predict(self, dist_form, k, test_X, kind):
         predict_result = np.zeros((np.shape(test_X)[1], ))
         predict_prob = np.zeros((self.label_num, np.shape(test_X)[1], ))
@@ -138,6 +145,7 @@ class classifier:
 
         return predict_result, predict_prob
 
+    @ jit
     def test(self, test_X, test_Y, kind, k, dist_form):
         predict_result, predict_prob = self.predict(dist_form, k, test_X, kind)
         accurate = np.sum(predict_result == test_Y) / np.shape(test_Y)[0]

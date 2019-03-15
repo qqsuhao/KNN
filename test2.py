@@ -49,7 +49,6 @@ end1 = time.perf_counter()
 print(end1 - start1, Pe1)
 
 
-
 params = {'dist_form': None,
           'test_X': test_X.T[:, 0:N],
           'test_Y': test_Y[0:N],
