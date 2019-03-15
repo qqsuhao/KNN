@@ -69,5 +69,27 @@ class KDNode(Node):
         
 
     def find_replacement(self):
+    
+    def should_remove(self, point, node):
+        检测给定的point是否与结点的data值相等，如果不相等返回False；
+        如果相等返回 (node is None) or (node is self)
+        
+    def remove(self, point, node=None):
+        移除给定point对应的结点，并返回这棵子树对应的新的根结点。
+        如果发现有多个值匹配，只移除一个。
+        算法如下：
+        1.如果结点为空结点，则直接返回。
+        2.使用should_remove函数，如果根结点匹配成功，则使用_remove函数移除结点
+        3.如果上一步匹配失败，则分别对根结点的左右子结点进行匹配，如果匹配成功，
+            则使用_remove函数移除结点。
+        4.如果上一步失败，则判断point点应该在左子树还是右子树，以子树的根结点
+            开始，递归执行函数remove（）
+    
+    def _remove(self, point):
+        主要功能是移除结点，并赋予子树新的结点。
+        算法如下：
+        1.使用is_leaf，如果该节点是叶子结点，则直接将数据置空。
+        2.如果不是叶子结点，使用find_replacement()函数找到可以替代该结点的点，
+            
         
 '''
