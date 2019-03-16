@@ -41,10 +41,8 @@ class Node():
     def inorder(self):
 
     def postorder(self):
-'''
 
 
-'''
 class KDNode(Node):
     def __init__(self, data, left, right, axis, sel_axis, dimension):
         重写父类构造函数；
@@ -90,6 +88,53 @@ class KDNode(Node):
         算法如下：
         1.使用is_leaf，如果该节点是叶子结点，则直接将数据置空。
         2.如果不是叶子结点，使用find_replacement()函数找到可以替代该结点的点，
-            
-        
+
+    def is_balance(self):
+        检查树是否平衡。如果两个子树的高度最多相差1，则认为是平衡的。
+
+    def rebalance(self):
+        使用creat()函数对先序遍历的点创建重新平衡kdtree。
+
+    def axis_dist(self, point, axis):
+        指定维度的平方距离。
+
+    def dist(self, point):
+        借助axis_dist函数求解结点数据和指定点point的平方距离。
+
+    def search_knn(self, point, k, dist=None):
+
+
+    def _search_node(self, point, k, results, get_dist, counter):
+        counter:计数器
+        get_dist: lambda表达式，输入参数是节点对象，用于求解距离
+
+    def search_nn(self, point, dist=None):
+        寻找给定点的最近邻点
+
+    def _search_nn_dist(self, point, dist, results, get_dist):
+        dist是给定的距离，get_dist是求解距离的lambda表达式
+
+    def search_nn_dist(self, point, distance, best=None):
+        寻找给定距离内最近邻点，需要使用_search_nn_dist()函数
+
+    def is_valid(self):
+        检查数是否有效
+
+全局函数
+def visualize(tree, max_level, node_width, left_padding):
+    可视化二叉树，用处不大，没有详细阅读源代码。
+
+def level_order(tree, include_all=False):
+    用于可视化的辅助函数，没有详细学习
+
+def check_dimensionality(point_list, dimensions=None):
+    检查数据维度
+
+def create(point_list=None, dimensions=None, axis=0, sel_axis=None):
+    从列表创建kdtree
+    算法思路：
+    1.寻找指定维度下的中位点，以此点为根结点，将空间一分为二；
+    2.递归：中位点左侧的点建立以下一维度为分割平面的kdtree；
+        中位点右侧的点建立以下一维度为分割平面的kdtree；
+
 '''
