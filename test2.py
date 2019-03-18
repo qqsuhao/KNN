@@ -49,15 +49,11 @@ end1 = time.perf_counter()
 print(end1 - start1, Pe1)
 
 
-params = {'dist_form': None,
-          'test_X': test_X.T[:, 0:N],
-          'test_Y': test_Y[0:N],
-          'k': 5,
-          'kind': 'heapsort'}
+
 start = time.perf_counter()
-test = KNN.classifier('force', None)
-test.train(train_X.T, train_Y, None)
-pe = test.test(**params)
+KK = KNN.classifier(research='force', dist_form='euclidean', k=5)
+KK.train(train_X.T, train_Y, None)
+pe = KK.test(test_X.T[:,0:N], test_Y[0:N])
 # predict_result, predict_prob = test.predict(dist_form=None, k=5, test_X=test_X[:, 0:N], kind='heapsort')
 end = time.perf_counter()
 print(end - start, pe)

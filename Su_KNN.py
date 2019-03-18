@@ -13,101 +13,34 @@ Created on Wed Mar 13 21:58:57 2019
 """
 
 import numpy as np
-import copy
-from numba import jit
-import math
-
-
-# def distsort(a, k, option=False):
-#     '''
-#     \param: a:array, 有两列第一列是距离，第二列是标签
-#     \param: k:排序的个数
-#     '''
-#     if a.shape[1] != 2:
-#         return
-#     x = copy.copy(a)
-#     y = np.zeros((k,2))
-#     for i in range(k):
-#         tmp = np.argmin(x[:,0])
-#         y[i,:] = x[tmp,:]
-#         x = np.delete(x, tmp, 0)
-#     if option:
-#         return y
-#     else:
-#         return y[:, 1]
-
-
-def distsort(a, k, option=False):
-    '''
-    \param: a:array
-    \param: k:排序的个数
-    '''
-    if a.shape[1] != 2:
-        return
-    x = copy.copy(a)
-    if k == 0:
-        k = len(x)
-    y = x[0:k, :]  # 先选取前k个存在队列里，之后要进行排序
-
-    for i in range(k):
-        for j in range(k - 1 - i):
-            if y[j, 0] >= y[j + 1, 0]:
-                y[[j, j + 1], :] = y[[j + 1, j], :]  # 冒泡排序
-
-    for i in range(np.shape(x)[0] - k):
-        for j in range(k - 1):
-            if x[k + i, 0] >= y[k - 1, 0]:
-                break
-            elif x[k + i, 0] < y[0, 0]:
-                y = np.insert(y, 0, x[k + i, :], axis=0)
-                break
-            elif x[k + i, 0] < y[k - 1 - j, 0] and x[k + i, 0] >= y[k - 2 - j, 0]:
-                y = np.insert(y, k - 1 - j, x[k + i, :], axis=0)
-                break
-    if option:
-            return y
-    else:
-        return y[0:k, 1]
-
-
-def force_research(dist_form, train_X, train_Y, test_x, k, kind):
-    '''
-    :param dist_form: lambda表达式，计算距离的公式
-    :param train_X: 训练数据
-    :param train_Y: 训练数据标签
-    :param test_x: 测试数据，只有一个点
-    :param test_y: 测试数据的标签
-    :param k: 近邻数
-    :param kind: 排序方法，可选参数：'quicksort', 'mergesort', 'heapsort', 'stable'
-    :return: 返回对应近邻点的标签
-    '''
-    if dist_form is None:
-        @ jit
-        def dist_form(x, y):
-            return np.sqrt(np.sum((x - y)**2))
-    dist = np.zeros((np.shape(train_X)[1], ))
-    for index, x in enumerate(train_X.T):
-        dist[index] = dist_form(x, test_x)
-
-    # dist = list(map(lambda x,y:(x-y)**2, train_X, test_x))
-    # dist = sum(list[])
-
-    # dist = np.sqrt(np.sum((np.tile(test_x,(np.shape(train_X)[1],1)).T - train_X)**2, axis=0))
-
-    table = np.array([dist, train_Y]).T
-    neighbor = distsort(table, k)
-    return neighbor
+import force
+import Su_kdtree as kd
 
 
 class classifier:
 
-    def __init__(self, research, dist):
+    def __init__(
+            self,
+            research='force',
+            dist_form='euclidean',
+            weight=None,
+            k=5,
+            p=None,
+            V=None):
         '''
         :param research: 搜索方法，两种选择：force和kdtree
-        :param dist: lambda表达式，计算距离
+        :param dist_form: 距离类型
+        :param weight:计算权重的类型
+        :param p:计算距离需要用到的参数
+        :param V:计算距离需要用到的参数
+        :param k:近邻数
         '''
-        # self.research = research
-        pass
+        self.research = research
+        self.dist_form = dist_form
+        self.weight = weight
+        self.p = p
+        self.V = V
+        self.k = k
 
     def train(self, train_X, train_Y, prior):
         '''
@@ -118,35 +51,60 @@ class classifier:
         '''
         self.train_X = train_X
         self.train_Y = train_Y
-        if prior is None:
+        self.dimensions = train_X.shape[0]    #数据的属性个数，也可以说是维数
+        if prior is None:                     #如果prior is not None，则认为要制指定先验概率
             self.prior = np.bincount(train_Y) / len(train_Y)
         else:
             self.prior = prior
         self.label_num = np.shape(self.prior)[0]  # label必须从0开始，否则此会出错
 
-    @ jit
-    def predict(self, dist_form, k, test_X, kind):
+        # 选择使用的搜索算法，如果使用kdtree搜索，在训练数据部分进行构建kdtree
+        if self.research == 'kdtree':
+            table = np.concatenate((train_X.T, np.array([train_Y]).T), axis=1)
+            self.tree = kd.create(
+                table.tolist(), self.dimensions + 1, 0, None)
+
+    def predict(self, test_X):
+        '''
+        predict_result: 存放预测结果
+        predict_prob：存放置信度
+        neighbor_dist: 存放最近点的距离和对应的标签
+        1.使用bincount函数统计最近邻点中各个标签的占比，并将占比最大的标签作为预测结果。
+        2.使用argmax函数求得占比最大对应的标签
+        '''
         predict_result = np.zeros((np.shape(test_X)[1], ))
         predict_prob = np.zeros((self.label_num, np.shape(test_X)[1], ))
-        for index, test_x in enumerate(test_X.T):
-            # display(test_x)
-            neighbor = force_research(
-                train_X=self.train_X,
-                train_Y=self.train_Y,
-                dist_form=dist_form,
-                test_x=test_x,
-                k=k,
-                kind=kind)
-            neighbor = neighbor.astype(np.int8)
-            predict_prob[:, index] = np.bincount(
-                neighbor, minlength=self.label_num) / k
-            # predict_prob[index, :] = np.bincount(neighbor, minlength=self.label_num) * self.prior / k
-            predict_result[index] = np.argmax(predict_prob[:, index])
+        neighbor_dist = np.zeros(
+            (test_X.shape[1], self.k * 2))  # 用于存放所有测试样本近邻距离和对应标签
+        if self.research == 'force':
+            for index, test_x in enumerate(test_X.T):
+                neighbor = force.force_research(
+                    train_X=self.train_X,
+                    train_Y=self.train_Y,
+                    dist_form=self.dist_form,
+                    test_x=test_x,
+                    k=self.k,
+                    p=self.p)
+                neighbor_dist[index, 0:self.k] = neighbor[:, 0]
+                neighbor_dist[index, self.k:self.k * 2] = neighbor[:, 1]
+                neighbor = neighbor[:, 1].astype(np.int8)
+                predict_prob[:, index] = np.bincount(
+                    neighbor, minlength=self.label_num) / self.k
+                # predict_prob[index, :] = np.bincount(neighbor, minlength=self.label_num) * self.prior / k
+                predict_result[index] = np.argmax(predict_prob[:, index])
+            return predict_result, predict_prob, neighbor_dist
+        elif self.research == 'kdtree':
+            for index, test_x in enumerate(test_X.T):
+                neighbor = self.tree.kdtree_research(test_x.tolist(), self.k)
+                neighbor_dist[index, 0:self.k] = neighbor[:, 0]
+                neighbor_dist[index, self.k:self.k * 2] = neighbor[:, 1]
+                neighbor = neighbor[:, 1].astype(np.int8)
+                predict_prob[:, index] = np.bincount(
+                    neighbor, minlength=self.label_num) / self.k
+                predict_result[index] = np.argmax(predict_prob[:, index])
+            return predict_result, predict_prob, neighbor_dist
 
-        return predict_result, predict_prob
-
-    @ jit
-    def test(self, test_X, test_Y, kind, k, dist_form):
-        predict_result, predict_prob = self.predict(dist_form, k, test_X, kind)
+    def test(self, test_X, test_Y):
+        predict_result, predict_prob, _ = self.predict(test_X)
         accurate = np.sum(predict_result == test_Y) / np.shape(test_Y)[0]
         return accurate

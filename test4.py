@@ -8,8 +8,14 @@ import numpy as np
 
 np.random.seed(0)
 a = np.random.randint(0,50,(10,2))
-a = list(a)
-tree = kd.create(a, dimensions=2, axis=0, sel_axis=None)
+a = a.tolist()
+sel_axis=lambda x: (x+1) % 2
+tree = kd.create(a, dimensions=2, axis=0, sel_axis=sel_axis)
 kd.visualize(tree)
-b, c = tree.find_replacement()
-# x2 = kd.level_order(tree)
+
+
+c = np.append(a, np.random.randint(0,50,(10,1)),axis=1)
+c = c.tolist()
+tree2 = kd.create(c, dimensions=3, axis=0, sel_axis=lambda x: (x+1) % 2)
+b = tree2.search_knn([2,3,0],3)
+kd.visualize(tree2)

@@ -38,25 +38,23 @@ test_X = test[:, 1:9].T
 test_Y = test[:, 10].astype(np.int8)
 
 
-params = {'dist_form': None,
-          'test_X': test_X,
-          'test_Y': test_Y,
-          'k': 3,
-          'kind': 'heapsort'}
+
 start = time.perf_counter()
-test = KNN.classifier('force', None)
-test.train(train_X, train_Y, None)
-pe = test.test(**params)
-# predict_result, predict_prob = test.predict(dist_form=None, k=3, test_X=test_X, kind='heapsort')
+KK = KNN.classifier(research='kdtree', dist_form='euclidean', k=3)
+KK.train(train_X, train_Y, None)
+pe = KK.test(test_X, test_Y)
+predict_result, predict_prob, neighbor_dist = KK.predict(test_X)
+print(neighbor_dist)
 end = time.perf_counter()
 print(end - start, pe)
 
 
 start1 = time.perf_counter()
-neigh = KNeighborsClassifier(n_neighbors=3, algorithm='brute', metric='euclidean')
+neigh = KNeighborsClassifier(n_neighbors=3, algorithm='kd_tree', metric='euclidean')
 neigh.fit(train_X.T, train_Y)
 Pe1 = neigh.score(test_X.T, test_Y)
-# dist1, result1 = neigh.kneighbors(X=test_X.T, n_neighbors=3, return_distance=True)
-# print(dist1)
+dist1, result1 = neigh.kneighbors(X=test_X.T, n_neighbors=3, return_distance=True)
+a = neigh.predict(test_X.T)
+print(a)
 end1 = time.perf_counter()
 print(end1 - start1, Pe1)
