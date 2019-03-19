@@ -4,12 +4,8 @@
     <list default="true" id="15854b1f-d356-444d-aff2-4183aa6523b1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Su_KNN.py" beforeDir="false" afterPath="$PROJECT_DIR$/Su_KNN.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Su_kdtree.py" beforeDir="false" afterPath="$PROJECT_DIR$/Su_kdtree.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist_formular.py" beforeDir="false" afterPath="$PROJECT_DIR$/dist_formular.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test1.py" beforeDir="false" afterPath="$PROJECT_DIR$/test1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/set_weight.py" beforeDir="false" afterPath="$PROJECT_DIR$/set_weight.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test2.py" beforeDir="false" afterPath="$PROJECT_DIR$/test2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test3.py" beforeDir="false" afterPath="$PROJECT_DIR$/test3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test4.py" beforeDir="false" afterPath="$PROJECT_DIR$/test4.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,6 +14,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/$set_weight.coverage" NAME="set_weight Coverage Results" MODIFIED="1552961343887" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/$loaddata.coverage" NAME="loaddata Coverage Results" MODIFIED="1552530859830" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/KNN$test1.coverage" NAME="test1 Coverage Results" MODIFIED="1552712106890" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/$Su_KNN.coverage" NAME="Su_KNN Coverage Results" MODIFIED="1552791844909" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -56,7 +53,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/dist_formular.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="147">
+                <state relative-caret-position="1113">
                   <caret line="55" column="22" selection-start-line="55" selection-start-column="22" selection-end-line="55" selection-end-column="22" />
                   <folding>
                     <element signature="e#104#148#0" expanded="true" />
@@ -68,8 +65,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Su_KNN.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2205">
-                  <caret line="105" lean-forward="true" selection-start-line="105" selection-end-line="105" />
+                <state relative-caret-position="208">
+                  <caret line="95" column="21" selection-start-line="95" selection-start-column="21" selection-end-line="95" selection-end-column="21" />
                 </state>
               </provider>
             </entry>
@@ -77,10 +74,22 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Su_kdtree.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="482">
-                  <caret line="354" column="25" selection-start-line="354" selection-start-column="25" selection-end-line="354" selection-end-column="25" />
+                <state relative-caret-position="314">
+                  <caret line="220" column="48" lean-forward="true" selection-start-line="220" selection-start-column="48" selection-end-line="220" selection-end-column="48" />
                   <folding>
                     <element signature="e#179#216#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/set_weight.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="210">
+                  <caret line="10" column="36" lean-forward="true" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
+                  <folding>
+                    <element signature="e#101#112#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -99,19 +108,10 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://C:/applications/Anaconda3/Lib/site-packages/sklearn/neighbors/classification.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1812">
-                  <caret line="172" column="16" selection-start-line="172" selection-start-column="16" selection-end-line="172" selection-end-column="16" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/test2.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="641">
-                  <caret line="54" selection-start-line="54" selection-end-line="54" />
+                <state relative-caret-position="606">
+                  <caret line="54" column="84" selection-start-line="54" selection-start-column="84" selection-end-line="54" selection-end-column="84" />
                   <folding>
                     <element signature="e#96#116#0" expanded="true" />
                   </folding>
@@ -119,11 +119,20 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://C:/applications/Anaconda3/Lib/site-packages/sklearn/neighbors/__init__.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="210">
+                  <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/loaddata.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="231">
-                  <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+                  <caret line="16" selection-start-line="16" selection-end-line="16" />
                   <folding>
                     <element signature="e#97#106#0" expanded="true" />
                   </folding>
@@ -134,12 +143,12 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+        <leaf>
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/Su_kdtree.py">
+            <entry file="file://$PROJECT_DIR$/Su_KNN.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="42">
-                  <caret line="8" selection-start-line="8" selection-end-line="8" />
+                <state relative-caret-position="357">
+                  <caret line="22" column="17" lean-forward="true" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
                 </state>
               </provider>
             </entry>
@@ -167,20 +176,20 @@
         <option value="$PROJECT_DIR$/loaddata.py" />
         <option value="$PROJECT_DIR$/kdtree总结.py" />
         <option value="$PROJECT_DIR$/test1.py" />
-        <option value="$PROJECT_DIR$/set_weight.py" />
         <option value="$PROJECT_DIR$/force.py" />
         <option value="$PROJECT_DIR$/dist_formular.py" />
-        <option value="$PROJECT_DIR$/test2.py" />
         <option value="$PROJECT_DIR$/test4.py" />
         <option value="$PROJECT_DIR$/test3.py" />
         <option value="$PROJECT_DIR$/Su_kdtree.py" />
         <option value="$PROJECT_DIR$/Su_KNN.py" />
+        <option value="$PROJECT_DIR$/test2.py" />
+        <option value="$PROJECT_DIR$/set_weight.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="707" />
-    <option name="y" value="1" />
+    <option name="x" value="-202" />
+    <option name="y" value="160" />
     <option name="width" value="1222" />
     <option name="height" value="1038" />
   </component>
@@ -192,6 +201,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -203,7 +213,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -212,7 +221,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="sshConsole" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -231,29 +240,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.test3">
-    <configuration name="Su_KNN" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="代码仿真" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Su_KNN.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.test2">
     <configuration name="dist_formular" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="代码仿真" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -276,13 +263,32 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="test2" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="set_weight" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="代码仿真" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/set_weight.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test2" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="代码仿真" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -302,6 +308,9 @@
       <module name="代码仿真" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -342,17 +351,17 @@
     <list>
       <item itemvalue="Python.test2" />
       <item itemvalue="Python.dist_formular" />
-      <item itemvalue="Python.Su_KNN" />
       <item itemvalue="Python.test4" />
       <item itemvalue="Python.test3" />
+      <item itemvalue="Python.set_weight" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.test3" />
         <item itemvalue="Python.test2" />
+        <item itemvalue="Python.set_weight" />
+        <item itemvalue="Python.test3" />
         <item itemvalue="Python.test4" />
         <item itemvalue="Python.dist_formular" />
-        <item itemvalue="Python.Su_KNN" />
       </list>
     </recent_temporary>
   </component>
@@ -391,11 +400,14 @@
       <workItem from="1552702286859" duration="8911000" />
       <workItem from="1552786074216" duration="17681000" />
       <workItem from="1552870655057" duration="2711000" />
+      <workItem from="1552873767196" duration="186000" />
+      <workItem from="1552874024176" duration="693000" />
+      <workItem from="1552957765585" duration="3927000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="134686000" />
+    <option name="totallyTimeSpent" value="139492000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -409,12 +421,12 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.48732942" visible="true" weight="0.13219616" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48732942" visible="true" weight="0.13539445" />
       <window_info id="Favorites" order="1" sideWeight="0.5010482" side_tool="true" weight="0.18364611" />
       <window_info x="55" y="354" width="242" height="236" id="Structure" order="2" sideWeight="0.5126706" side_tool="true" weight="0.13270777" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" weight="0.26912183" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" weight="0.26898047" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.6162047" weight="0.30368763" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -423,7 +435,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.4989339" weight="0.32960895" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.39978677" side_tool="true" weight="0.2451193" />
-      <window_info anchor="bottom" id="Python Console" order="11" sideWeight="0.6002132" weight="0.26681128" />
+      <window_info anchor="bottom" id="Python Console" order="11" sideWeight="0.6002132" visible="true" weight="0.26681128" />
       <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.4989339" weight="0.32577905" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -465,7 +477,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/test2.py</url>
-          <line>54</line>
+          <line>55</line>
           <option name="timeStamp" value="26" />
         </line-breakpoint>
       </breakpoints>
@@ -519,7 +531,6 @@
       </provider>
     </entry>
     <entry file="file://C:/applications/Anaconda3/Lib/codecs.py" />
-    <entry file="file://C:/applications/Anaconda3/Lib/site-packages/sklearn/neighbors/__init__.py" />
     <entry file="file://C:/applications/Anaconda3/Lib/site-packages/scikit_learn-0.20.2-py3.7.egg-info/dependency_links.txt" />
     <entry file="file://C:/applications/Anaconda3/Lib/site-packages/scikit_learn-0.20.2-py3.7.egg-info/not-zip-safe" />
     <entry file="file://$USER_HOME$/.PyCharm2018.3/system/python_stubs/1758718683/time.py" />
@@ -585,9 +596,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/set_weight.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/force.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1206">
@@ -624,7 +632,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dist_formular.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
+        <state relative-caret-position="1113">
           <caret line="55" column="22" selection-start-line="55" selection-start-column="22" selection-end-line="55" selection-end-column="22" />
           <folding>
             <element signature="e#104#148#0" expanded="true" />
@@ -632,17 +640,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Su_KNN.py">
+    <entry file="file://$PROJECT_DIR$/loaddata.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2205">
-          <caret line="105" lean-forward="true" selection-start-line="105" selection-end-line="105" />
+        <state relative-caret-position="231">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+          <folding>
+            <element signature="e#97#106#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/applications/Anaconda3/Lib/site-packages/sklearn/neighbors/classification.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="36" column="34" lean-forward="true" selection-start-line="36" selection-start-column="34" selection-end-line="36" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/applications/Anaconda3/Lib/site-packages/sklearn/neighbors/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Su_kdtree.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="482">
-          <caret line="354" column="25" selection-start-line="354" selection-start-column="25" selection-end-line="354" selection-end-column="25" />
+        <state relative-caret-position="314">
+          <caret line="220" column="48" lean-forward="true" selection-start-line="220" selection-start-column="48" selection-end-line="220" selection-end-column="48" />
           <folding>
             <element signature="e#179#216#0" expanded="true" />
           </folding>
@@ -659,29 +684,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/applications/Anaconda3/Lib/site-packages/sklearn/neighbors/classification.py">
+    <entry file="file://$PROJECT_DIR$/Su_KNN.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1812">
-          <caret line="172" column="16" selection-start-line="172" selection-start-column="16" selection-end-line="172" selection-end-column="16" />
+        <state relative-caret-position="208">
+          <caret line="95" column="21" selection-start-line="95" selection-start-column="21" selection-end-line="95" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="641">
-          <caret line="54" selection-start-line="54" selection-end-line="54" />
+        <state relative-caret-position="606">
+          <caret line="54" column="84" selection-start-line="54" selection-start-column="84" selection-end-line="54" selection-end-column="84" />
           <folding>
             <element signature="e#96#116#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/loaddata.py">
+    <entry file="file://$PROJECT_DIR$/set_weight.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        <state relative-caret-position="210">
+          <caret line="10" column="36" lean-forward="true" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
           <folding>
-            <element signature="e#97#106#0" expanded="true" />
+            <element signature="e#101#112#0" expanded="true" />
           </folding>
         </state>
       </provider>

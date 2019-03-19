@@ -15,6 +15,7 @@ Created on Wed Mar 13 21:58:57 2019
 import numpy as np
 import force
 import Su_kdtree as kd
+import set_weight as weight
 
 
 class classifier:
@@ -23,7 +24,7 @@ class classifier:
             self,
             research='force',
             dist_form='euclidean',
-            weight=None,
+            weight='uniform',
             k=5,
             p=None,
             V=None):
@@ -87,11 +88,14 @@ class classifier:
                     p=self.p)
                 neighbor_dist[index, 0:self.k] = neighbor[:, 0]
                 neighbor_dist[index, self.k:self.k * 2] = neighbor[:, 1]
-                neighbor = neighbor[:, 1].astype(np.int8)
-                predict_prob[:, index] = np.bincount(
-                    neighbor, minlength=self.label_num) / self.k
-                # predict_prob[index, :] = np.bincount(neighbor, minlength=self.label_num) * self.prior / k
-                predict_result[index] = np.argmax(predict_prob[:, index])
+
+                if self.weight == 'gaussian':
+                    predict_prob[:, index], predict_result[index] = weight.gaussian_weight(neighbor, self.label_num)
+                elif self.weight == 'reverse_weight':
+                    predict_prob[:, index], predict_result[index] = weight.reverse_weight(neighbor, self.label_num)
+                else:
+                    predict_prob[:, index], predict_result[index] = weight.uniform_weight(neighbor, self.label_num)
+
             return predict_result, predict_prob, neighbor_dist
         elif self.research == 'kdtree':
             for index, test_x in enumerate(test_X.T):

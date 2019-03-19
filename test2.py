@@ -35,12 +35,13 @@ test_X, test_Y = load_mnist('.', kind='t10k')
 train_X = train_X.astype('float64')
 test_X = test_X.astype('float64')
 
-N = 10
+N = 1000
 start1 = time.perf_counter()
 neigh = KNeighborsClassifier(
-    n_neighbors=5,
+    n_neighbors=10,
     algorithm='brute',
-    metric='euclidean')
+    metric='euclidean',
+    )
 neigh.fit(train_X, train_Y)
 Pe1 = neigh.score(test_X[0:N, :], test_Y[0:N])
 # dist1, result1 = neigh.kneighbors(X=test_X[1:2, :], n_neighbors=5, return_distance=True)
@@ -51,7 +52,7 @@ print(end1 - start1, Pe1)
 
 
 start = time.perf_counter()
-KK = KNN.classifier(research='force', dist_form='euclidean', k=5)
+KK = KNN.classifier(research='force', dist_form='euclidean', weight='gaussian', k=10)
 KK.train(train_X.T, train_Y, None)
 pe = KK.test(test_X.T[:,0:N], test_Y[0:N])
 # predict_result, predict_prob = test.predict(dist_form=None, k=5, test_X=test_X[:, 0:N], kind='heapsort')
